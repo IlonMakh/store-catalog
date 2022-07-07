@@ -1,0 +1,26 @@
+@font-face {
+    font-family: "Ubuntu"; 
+    src: url("assets/fonts/Ubuntu-Regular.ttf") format("truetype"); 
+    font-style: normal; 
+    font-weight: normal; 
+    } 
+
+@font-face {
+    font-family: "Ubuntu"; 
+    src: url("assets/fonts/Ubuntu-Light.ttf") format("truetype"); 
+    font-style: normal; 
+    font-weight: 300; 
+    } 
+
+@font-face {
+    font-family: "Ubuntu"; 
+    src: url("assets/fonts/Ubuntu-Bold.ttf") format("truetype"); 
+    font-style: normal; 
+    font-weight: bold; 
+    } 
+
+
+
+body {
+    font-family: "Ubuntu", sans-serif;
+}

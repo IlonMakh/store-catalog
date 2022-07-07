@@ -17,18 +17,18 @@ const baseConfig = {
 
             { 
                 test: /\.ts$/i,
-                 use: 'ts-loader' 
+                use: 'ts-loader' 
             },
 
             {
-                test: /\.(png|svg|jpg|jpeg|gif)$/i,
+                test: /\.(ttf|png|svg|jpg|jpeg|gif)$/i,
                 type: 'asset/resource',
                 use: 'file-loader'
-        }
+            },
         ],
     },
     resolve: {
-        extensions: ['.ts','.js']
+        extensions: ['.ts','.js', '.ttf']
     },
     output: {
         filename: 'index.js',
@@ -42,10 +42,10 @@ const baseConfig = {
         new CleanWebpackPlugin(),
         new EslingPlugin({ 
             extensions: 'ts'
-         }),
-         new CopyPlugin({
+        }),
+        new CopyPlugin({
             patterns: [
-              { from: "src/assets/images", to: "assets/images" },
+            { from: "src/assets/images", to: "assets/images" },
             ],
         }),
     ],
