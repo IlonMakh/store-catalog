@@ -19,8 +19,17 @@
     font-weight: bold; 
     } 
 
-
+* {
+    margin: 0;
+    padding: 0;
+}
 
 body {
     font-family: "Ubuntu", sans-serif;
+    background-color: #FFE3E9;
+}
+
+.page-wrapper {
+    margin: 0 auto;
+    max-width: 1280px;
 }
