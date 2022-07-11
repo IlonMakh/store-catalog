@@ -7,13 +7,19 @@
 }
 
 .new::after {
-    content: url(../../assets/images/new-gif.gif); /*Найти проблему, почему не отображается*/
+    content: ''; 
+    background-image: url(../../assets/images/new-gif.gif);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     display: block;
-    width: 20px;
-    height: 10px;
-    top: 20px;
-    left: 0;
+    width: 70px;
+    height: 70px;
     z-index: 7;
+
+    position: absolute;
+    top:15px;
+    right: 15px;
 }
 
 .catalog_item {

@@ -10,7 +10,7 @@ export class Socks {
                 cardItem += `
                 <div class = 'catalog_item new'>
                     <img class = 'item_img' src = '${card.image}' alt = '${card.name}'>
-                    <h4 class = 'item_name' data-tooltip = 'Collection: ${card.collection} (${card.year}), Color: ${card.color}'>${card.name}</h4>
+                    <h4 class = 'item_name' data-tooltip = 'Collection: ${card.collection} (${card.year}), Color: ${card.color}, Size: ${card.size}'>${card.name}</h4>
                     <div class = 'item_price'>${card.price} $</div>
                     <button class = 'item_cart'><img src = '../../assets/images/cart-ico.png' alt = 'add-btn'></button>
                     <div class = 'item_amount'>${card.amount} pairs left</div>
@@ -20,7 +20,7 @@ export class Socks {
                 cardItem += `
                 <div class = 'catalog_item'>
                     <img class = 'item_img' src = '${card.image}' alt = '${card.name}'>
-                    <h4 class = 'item_name' data-tooltip = 'Collection: ${card.collection} (${card.year}), Color: ${card.color}'>${card.name}</h4>
+                    <h4 class = 'item_name' data-tooltip = 'Collection: ${card.collection} (${card.year}), Color: ${card.color}, Size: ${card.size}'>${card.name}</h4>
                     <div class = 'item_price'>${card.price} $</div>
                     <button class = 'item_cart'><img src = '../../assets/images/cart-ico.png' alt = 'add-btn'></button>
                     <div class = 'item_amount'>${card.amount} pairs left</div>

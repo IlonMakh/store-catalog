@@ -22,8 +22,10 @@ const baseConfig = {
 
             {
                 test: /\.(ttf|png|svg|jpg|jpeg|gif)$/i,
-                type: 'asset/resource',
-                use: 'file-loader'
+                loader: 'file-loader',
+                options: {
+                    name: '[name].[ext]',
+                },
             },
         ],
     },
@@ -46,6 +48,7 @@ const baseConfig = {
         new CopyPlugin({
             patterns: [
             { from: "src/assets/images", to: "assets/images" },
+            { from: "src/assets/fonts", to: "assets/fonts" },
             ],
         }),
     ],
