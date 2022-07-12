@@ -3,7 +3,7 @@
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     column-gap: 25px;
     row-gap: 30px;
-    justify-items:center;
+    justify-items:self-start;
     justify-content: space-between;
 }
 
@@ -79,14 +79,23 @@
     color: #444444;
 }
 
-.item_cart {
+.item_cart,
+.item_cart-active {
     position: absolute;
     bottom: 15px;
     right: 15px;
     width: 50px;
     height: 50px;
-    background-color: #FF436E;
     border: none;
+    cursor: pointer;
+}
+
+.item_cart {
+    background-color: #FF436E;
+}
+
+.item_cart-active {
+    background-color:#444444; ;
 }
 
 .item_amount {

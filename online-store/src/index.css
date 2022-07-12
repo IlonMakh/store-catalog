@@ -10,19 +10,29 @@
     padding: 0;
 }
 
+html {
+    height: 100%;
+}
+
 body {
     font-family: "Ubuntu", sans-serif;
     background-color: #FFE3E9;
+    height: 100%;
 }
 
-.page-wrapper {
+.wrapper {
     margin: 0 auto;
+    width: 90%;
     max-width: 1280px;
 }
 
 main {
+    margin-bottom: 30px;
+}
+
+main .wrapper{
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 3fr;
     gap: 30px;
     justify-content: center;
     align-content: center;
@@ -34,7 +44,42 @@ main {
 
 .no-result-msg {
     font-size: 20px;
-    margin-top: 100px;
     text-align: center;
     color: #444444;
+}
+
+footer {
+    background-color: #FFFFFF;
+    height: 100px;
+    width: 100%;
+}
+
+footer .wrapper {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 100px;
+}
+
+footer p {
+    font-size: 20px;
+}
+
+footer .footer_link {
+    display: block;
+}
+
+footer .github {
+    width: 3vw;
+    height: 3vw;
+}
+
+footer .github img{
+    width: 100%;
+}
+
+footer .rs {
+    width: 8vw;
+    height: 3vw;
 }

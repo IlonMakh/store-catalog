@@ -81,7 +81,7 @@ export const catalog: ICardItem[] = [
 
     {
         image: 'assets/images/catalog/HP_grey_socks.jpg',
-        name: 'Harry Potter Socks',
+        name: 'Harry Potter Socks 2',
         amount: 61,
         year: 2021,
         collection: 'Hogwarts school',
@@ -94,7 +94,7 @@ export const catalog: ICardItem[] = [
 
     {
         image: 'assets/images/catalog/HP_purple_socks.jpeg',
-        name: 'Harry Potter Socks',
+        name: 'Harry Potter Socks 3',
         amount: 19,
         year: 2021,
         collection: 'Hogwarts school',
@@ -263,7 +263,7 @@ export const catalog: ICardItem[] = [
 
     {
         image: 'assets/images/catalog/WW2_socks.jpg',
-        name: 'Wonder Women Socks',
+        name: 'Wonder Women Socks 2',
         amount: 77,
         year: 2021,
         collection: 'Superhero workdays',

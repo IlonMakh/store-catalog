@@ -1,0 +1,42 @@
+header {
+    padding: 10px 0 20px;
+}
+
+.header_wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header_logo {
+    display: block;
+    width: 145px;
+    height: 85px;
+    background-image: url(../../assets/images/store-logo2.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.header_cart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.cart_ico {
+    width: 30px;
+    height: 30px;
+    background-image: url(../../assets/images/header-cart-ico.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.cart_counter {
+    display: block;
+    font-size: 16px;
+    color: #444444;
+    font-weight: bold;
+}

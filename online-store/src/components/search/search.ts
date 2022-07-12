@@ -7,7 +7,7 @@ export class Search {
         input.setAttribute('autofocus', 'autofocus');
         input.setAttribute('placeholder', 'Type something...');
         input.classList.add('search_input');
-        (<HTMLElement>document.querySelector('.search')).append(input);
+        (<HTMLElement>document.querySelector('.search_wrapper')).append(input);
     }
 
     search() {
