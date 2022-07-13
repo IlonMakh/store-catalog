@@ -1,0 +1,174 @@
+.filter {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.filter h6 {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.filter_collection select {
+    appearance: none;
+    background-image: url(../../assets/images/arrow-ico.png);
+    background-repeat: no-repeat;
+    background-position: 155px;
+    background-size:15px;
+    padding: 5px 20px 5px 10px;
+    border: 1px solid #FF436E;
+    border-radius: 5px;
+    outline: none;
+    font-size: 14px;
+    color: #444444;
+    background-color: #ffeff2;
+    cursor: pointer;
+}
+
+.filter_size .sizes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.filter_size button {
+    background-color: #ffeff2;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid #FF436E;
+    cursor: pointer;
+    font-size: 14px;
+    color: #444444;
+    font-weight: bold;
+}
+
+.filter_size .active {
+    border-color: #4cdaed;
+    color: #777575;
+}
+
+.filter_color .colors {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.colors div {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap: 5px;
+}
+
+.filter_color input {
+    border: none;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border-radius:50%;
+    position: relative;
+}
+
+.filter_color input:checked::before {
+    content:"\2713";
+    color: black;
+    padding: initial;
+    font-weight: bold;
+    position: absolute;
+    left: 5px;
+    top: 1px;
+}
+
+.filter_color label {
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.white input {
+    background-color: white;
+}
+
+.black input {
+    background-color: black;
+}
+
+.black input:checked::before {
+    content:"\2713";
+    color: white;
+    padding: initial;
+    font-weight: bold;
+    position: absolute;
+    left: 5px;
+    top: 1px;
+} 
+
+.red input {
+    background-color: red;
+}
+
+.grey input {
+    background-color: grey;
+}
+
+.blue input {
+    background-color: blue;
+}
+
+.pink input {
+    background-color: palevioletred;
+}
+
+.purple input {
+    background-color: purple;
+}
+
+.yellow input {
+    background-color: yellow;
+}
+
+.green input {
+    background-color: green;
+}
+
+.filter_new {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.filter_new label {
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.filter_new input {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: #FFFFFF;
+    position: relative;
+    border: 1px solid #FF436E;
+    border-radius: 5px;
+}
+
+.filter_new input:checked {
+    background-color: #FF436E;
+}
+
+.filter_new input:checked::before {
+    content:"\2713";
+    color: white;
+    padding: initial;
+    font-weight: bold;
+    position: absolute;
+    left: 4px;
+}

@@ -38,6 +38,12 @@ main .wrapper{
     align-content: center;
 }
 
+.sorting {
+    border: 2px solid #FFFFFF;
+    padding: 20px;
+    width: 250px;
+}
+
 .hide {
     display: none;
 }

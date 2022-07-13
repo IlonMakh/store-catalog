@@ -1,0 +1,80 @@
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none; 
+}
+
+input[type='number'],
+input[type="number"]:hover,
+input[type="number"]:focus {
+    appearance: none;
+    -moz-appearance: textfield;
+}
+
+.price_range,
+.amount_range {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.filter_price input,
+.filter_amount input {
+    background-color: #FF436E;
+    border: none;
+    outline: none;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    cursor:default;
+}
+
+.price_range .noUi-base,
+.amount_range .noUi-base {
+    cursor: pointer;
+}
+
+.price_range .noUi-target,
+.amount_range .noUi-target {
+    width: 150px;
+    height: 3px;
+    border: none;
+    border-radius: 0%;
+    background-color:grey;
+    box-shadow: none;
+}
+
+.price_range .noUi-connect,
+.amount_range .noUi-connect {
+    background-color: #FF436E;
+}
+
+.price_range .noUi-handle::after,
+.price_range .noUi-handle::before,
+.amount_range .noUi-handle::after,
+.amount_range .noUi-handle::before  {
+    display: none;
+}
+
+.price_range .noUi-horizontal .noUi-handle,
+.amount_range .noUi-horizontal .noUi-handle {
+    width: 10px;
+    height: 10px;
+    border: 1px solid #FF436E;
+    box-shadow: none;
+    border-radius: none;
+    top: -3px;
+    cursor: pointer;
+
+}
+
+.price_range .noUi-horizontal .noUi-handle-upper,
+.amount_range .noUi-horizontal .noUi-handle-upper {
+    right: 0px;
+}
+
+.price_range .noUi-horizontal .noUi-handle-lower,
+.amount_range .noUi-horizontal .noUi-handle-lower {
+    right: -10px;
+}
