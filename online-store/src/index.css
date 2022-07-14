@@ -38,10 +38,11 @@ main .wrapper{
     align-content: center;
 }
 
-.sorting {
+.sorting-and-filter {
     border: 2px solid #FFFFFF;
     padding: 20px;
     width: 250px;
+    height: fit-content;
 }
 
 .hide {

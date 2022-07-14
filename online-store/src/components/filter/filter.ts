@@ -94,7 +94,7 @@ export class Filter {
                 </div>
             </div>
         `;
-        (<HTMLElement>document.querySelector('.sorting')).innerHTML = htmlSorting;
+        (<HTMLElement>document.querySelector('.sorting-and-filter')).innerHTML = htmlSorting;
     }
 
     collectionFilter() {

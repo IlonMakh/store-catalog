@@ -1,0 +1,24 @@
+.sorting {
+    margin-bottom: 20px;
+}
+
+.sorting h6 {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.sorting select {
+    appearance: none;
+    background-image: url(../../assets/images/arrow-ico.png);
+    background-repeat: no-repeat;
+    background-position: 220px;
+    background-size:15px;
+    padding: 5px 20px 5px 10px;
+    border: 1px solid #FF436E;
+    border-radius: 5px;
+    outline: none;
+    font-size: 14px;
+    color: #444444;
+    background-color: #ffeff2;
+    cursor: pointer;
+}

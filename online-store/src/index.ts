@@ -5,21 +5,23 @@ import './index.css';
 import { localStorageUtil } from './storages/localStorage';
 import { Filter } from './components/filter/filter';
 import { NoUiSlider } from './components/nouislider/nouislider';
+import { Sorting } from './components/sorting/sorting';
 
-const socksCatalog = new Socks();
+export const filterControllers = new Filter();
+filterControllers.draw();
+
+const nouislider = new NoUiSlider();
+nouislider.draw();
+export const sorting = new Sorting();
+sorting.draw();
+
+export const socksCatalog = new Socks();
 socksCatalog.draw();
 
-const searchInput = new Search();
+export const searchInput = new Search();
 searchInput.draw();
 searchInput.search();
 
 export const header = new Header();
 header.draw(localStorageUtil.getProducts().length);
 header.addToCart();
-
-const filterControllers = new Filter();
-filterControllers.draw();
-filterControllers.collectionFilter();
-
-const nouislider = new NoUiSlider();
-nouislider.draw();

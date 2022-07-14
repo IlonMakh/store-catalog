@@ -1,3 +1,4 @@
+import { filterControllers, sorting } from '../../index';
 import { localStorageUtil } from '../../storages/localStorage';
 import { ICardItem } from '../../types/types';
 import { catalog } from './catalog';
@@ -6,7 +7,7 @@ import './catalog.css';
 export class Socks {
     draw() {
         let cardItem = '';
-        catalog.forEach((card: ICardItem) => {
+        (sorting.sort(catalog) as ICardItem[]).forEach((card: ICardItem) => {
             const socksStorage = localStorageUtil.getProducts();
             let activeClass: string;
             let newClass: string;
@@ -26,5 +27,6 @@ export class Socks {
         });
 
         (<HTMLElement>document.querySelector('.catalog_wrapper')).innerHTML = cardItem;
+        filterControllers.collectionFilter();
     }
 }
