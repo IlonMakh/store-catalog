@@ -1,3 +1,5 @@
+import { modal } from '../index';
+
 class LocalStorage {
     productsList: string;
 
@@ -18,11 +20,19 @@ class LocalStorage {
         const index: number = socks.indexOf(name);
         let pushProduct = false;
 
-        if (index === -1) {
-            socks.push(name);
-            pushProduct = true;
-        } else {
-            socks.splice(index, 1);
+        if (socks.length < 20) {
+            if (index === -1) {
+                socks.push(name);
+                pushProduct = true;
+            } else {
+                socks.splice(index, 1);
+            }
+        } else if (socks.length === 20) {
+            if (index === -1) {
+                modal.draw();
+            } else {
+                socks.splice(index, 1);
+            }
         }
 
         localStorage.setItem(this.productsList, JSON.stringify(socks));

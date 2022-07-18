@@ -123,7 +123,7 @@ export class Filter {
 
         const clrCheckboxes: NodeListOf<HTMLInputElement> = document.querySelectorAll('.color_checkbox');
         clrCheckboxes.forEach(function (elem) {
-            elem.addEventListener('change', () => {
+            elem.addEventListener('change' || 'load', () => {
                 socksCatalog.draw(filterControllers.allFilters(catalog));
                 header.addToCart();
             });
