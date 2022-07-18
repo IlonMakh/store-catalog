@@ -30,7 +30,6 @@ export class Socks {
 
         (<HTMLElement>document.querySelector('.catalog_wrapper')).innerHTML = cardItem;
         socksCatalog.checkResults();
-        console.log('draw');
     }
 
     checkResults() {
