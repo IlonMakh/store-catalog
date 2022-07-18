@@ -1,4 +1,4 @@
-import { filterControllers, socksCatalog } from '../../index';
+import { filterControllers, header, nouislider, socksCatalog, sorting } from '../../index';
 import { ICardItem } from '../../types/types';
 import { catalog } from '../catalog/catalog';
 import './filter.css';
@@ -101,32 +101,44 @@ export class Filter {
         (<HTMLElement>document.querySelector('.sorting-and-filter')).innerHTML = htmlSorting;
 
         const selector: HTMLSelectElement = document.querySelector('.collection_select') as HTMLSelectElement;
-        selector.addEventListener('change', () => socksCatalog.draw(filterControllers.collectionFilter(catalog)));
+        selector.addEventListener('change', () => {
+            socksCatalog.draw(filterControllers.allFilters(catalog));
+            header.addToCart();
+        });
 
         const sizeButtons: NodeListOf<HTMLElement> = document.querySelectorAll('.size-btn');
         sizeButtons.forEach(function (elem) {
             elem.addEventListener('click', function () {
                 elem.classList.toggle('active');
-                socksCatalog.draw(filterControllers.sizeFilter(catalog));
+                socksCatalog.draw(filterControllers.allFilters(catalog));
+                header.addToCart();
             });
         });
 
         const checkbox: HTMLInputElement = document.getElementById('new_checkbox') as HTMLInputElement;
-        checkbox.addEventListener('change', () => socksCatalog.draw(filterControllers.newFilter(catalog)));
+        checkbox.addEventListener('change', () => {
+            socksCatalog.draw(filterControllers.allFilters(catalog));
+            header.addToCart();
+        });
 
         const clrCheckboxes: NodeListOf<HTMLInputElement> = document.querySelectorAll('.color_checkbox');
         clrCheckboxes.forEach(function (elem) {
-            elem.addEventListener('change', () => socksCatalog.draw(filterControllers.colorFilter(catalog)));
+            elem.addEventListener('change', () => {
+                socksCatalog.draw(filterControllers.allFilters(catalog));
+                header.addToCart();
+            });
         });
     }
 
-    allFilters(cards: ICardItem) {
-        const collectionSelector: HTMLSelectElement = document.querySelector('.collection_select') as HTMLSelectElement;
-        const sizeButtons: NodeListOf<HTMLElement> = document.querySelectorAll('.size-btn');
-        const activeBtns: string[] = [];
-        const isNewCheckbox: HTMLInputElement = document.getElementById('new_checkbox') as HTMLInputElement;
-        const clrCheckboxes: NodeListOf<HTMLInputElement> = document.querySelectorAll('.color_checkbox');
-        const activeChbx: string[] = [];
+    allFilters(cards: ICardItem[]) {
+        let filteredCards: ICardItem[] = sorting.sort(cards);
+        filteredCards = filterControllers.collectionFilter(filteredCards);
+        filteredCards = filterControllers.sizeFilter(filteredCards);
+        filteredCards = filterControllers.newFilter(filteredCards);
+        filteredCards = filterControllers.colorFilter(filteredCards);
+        filteredCards = nouislider.priceRange(filteredCards);
+        filteredCards = nouislider.amountRange(filteredCards);
+        return filteredCards;
     }
 
     collectionFilter(cards: ICardItem[]) {

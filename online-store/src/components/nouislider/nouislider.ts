@@ -3,7 +3,7 @@ import './nouislider.min.css';
 import './nouislider.min.js';
 import { TargetElement } from '../../types/nouislider_types';
 import { ICardItem } from '../../types/types';
-import { nouislider, socksCatalog } from '../../index';
+import { filterControllers, header, socksCatalog } from '../../index';
 import { catalog } from '../catalog/catalog';
 const noUiSlider = require('nouislider');
 
@@ -47,11 +47,13 @@ export class NoUiSlider {
         });
 
         rangePriceSlider?.noUiSlider?.on('change', function () {
-            socksCatalog.draw(nouislider.priceRange(catalog));
+            socksCatalog.draw(filterControllers.allFilters(catalog));
+            header.addToCart();
         });
 
         rangeAmountSlider?.noUiSlider?.on('change', function () {
-            socksCatalog.draw(nouislider.amountRange(catalog));
+            socksCatalog.draw(filterControllers.allFilters(catalog));
+            header.addToCart();
         });
     }
 

@@ -1,4 +1,4 @@
-import { header, modal } from '../../index';
+import { header } from '../../index';
 import { localStorageUtil } from '../../storages/localStorage';
 import './header.css';
 
@@ -21,19 +21,14 @@ export class Header {
             const cartButton: HTMLButtonElement = elem.querySelector('button') as HTMLButtonElement;
             const cardName: string = (<HTMLElement>elem.querySelector('.item_name')).innerText;
             (<HTMLButtonElement>cartButton).addEventListener('click', function () {
-                const socksStorage = localStorageUtil.getProducts();
-                if (socksStorage.length >= 20) {
-                    modal.draw();
+                const { pushProduct, socks } = localStorageUtil.putProducts(cardName);
+                if (pushProduct) {
+                    cartButton.classList.add('item_cart-active');
                 } else {
-                    const { pushProduct, socks } = localStorageUtil.putProducts(cardName);
-                    if (pushProduct) {
-                        cartButton.classList.add('item_cart-active');
-                    } else {
-                        cartButton.classList.remove('item_cart-active');
-                        cartButton.classList.add('item_cart');
-                    }
-                    header.draw(socks.length);
+                    cartButton.classList.remove('item_cart-active');
+                    cartButton.classList.add('item_cart');
                 }
+                header.draw(socks.length);
             });
         });
     }

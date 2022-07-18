@@ -1,4 +1,4 @@
-import { socksCatalog, sorting } from '../../index';
+import { filterControllers, header, socksCatalog } from '../../index';
 import { ICardItem } from '../../types/types';
 import { catalog } from '../catalog/catalog';
 import './sorting.css';
@@ -23,7 +23,8 @@ export class Sorting {
         filterAndSorting.insertBefore(sortingBlock, filter);
         const selector: HTMLSelectElement = document.querySelector('.sorting_select') as HTMLSelectElement;
         selector.addEventListener('change', function () {
-            socksCatalog.draw(sorting.sort(catalog));
+            socksCatalog.draw(filterControllers.allFilters(catalog));
+            header.addToCart();
         });
     }
 

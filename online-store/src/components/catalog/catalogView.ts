@@ -1,7 +1,6 @@
-//import { filterControllers, nouislider, sorting } from '../../index';
+import { searchInput, socksCatalog } from '../../index';
 import { localStorageUtil } from '../../storages/localStorage';
 import { ICardItem } from '../../types/types';
-//import { catalog } from './catalog';
 
 import './catalog.css';
 
@@ -38,6 +37,14 @@ export class Socks {
         });
 
         (<HTMLElement>document.querySelector('.catalog_wrapper')).innerHTML = cardItem;
+        socksCatalog.checkResults();
         console.log('draw');
+    }
+
+    checkResults() {
+        const results = document.querySelectorAll('.catalog_item');
+        if (results.length === 0) {
+            searchInput.noResult();
+        }
     }
 }
