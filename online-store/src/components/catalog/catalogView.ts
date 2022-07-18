@@ -30,7 +30,7 @@ export class Socks {
                     <img class = 'item_img' src = '${card.image}' alt = '${card.name}'>
                     <h4 class = 'item_name' data-tooltip = 'Collection: ${card.collection} (${card.year}), Color: ${card.color}, Size: ${card.size}'>${card.name}</h4>
                     <div class = 'item_price'>${card.price} $</div>
-                    <button class = '${activeClass}')'><img src = '../../assets/images/cart-ico.png' alt = 'add-btn'></button>
+                    <button class = '${activeClass}')'><img src = './assets/images/cart-ico.png' alt = 'add-btn'></button>
                     <div class = 'item_amount'>${card.amount} pairs left</div>
                 </div>
                 `;
