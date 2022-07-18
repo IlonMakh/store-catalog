@@ -32,11 +32,24 @@
     padding: 15px 15px;
     gap: 10px;
     position: relative;
+    cursor: pointer;
+    transition: 1s;
+}
+
+.catalog_item:hover,
+.active_item {
+    background-color: #e7ced4;
+}
+
+.catalog_item:hover .item_img {
+    transform: scale(0.95);
 }
 
 .item_img {
     width: 230px;
     height: 100%;
+    transform: scale(1);
+    transition: 1s;
 }
 
 .item_name {
@@ -60,7 +73,7 @@
     bottom: 30px;
     left: 0;
     color: #6e6b6b;
-    background-color: #fac2cf;
+    background-color: #FFFFFF;
     border-radius: 9px;
     transition: 1s;
     opacity:0;

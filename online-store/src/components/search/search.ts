@@ -46,7 +46,7 @@ export class Search {
         if (!document.querySelector('.no-result-msg')) {
             const noResultMsg: HTMLElement = document.createElement('div');
             noResultMsg.classList.add('no-result-msg');
-            noResultMsg.innerHTML = "Sorry, now we don't have the product you are looking for...";
+            noResultMsg.innerHTML = `Sorry, now we don't have the product you are looking for...`;
             (<HTMLElement>document.querySelector('.catalog_wrapper')).append(noResultMsg);
         }
     }

@@ -20,13 +20,15 @@ export class Header {
         cards.forEach(function (elem) {
             const cartButton: HTMLButtonElement = elem.querySelector('button') as HTMLButtonElement;
             const cardName: string = (<HTMLElement>elem.querySelector('.item_name')).innerText;
-            (<HTMLButtonElement>cartButton).addEventListener('click', function () {
+            elem.addEventListener('click', function () {
                 const { pushProduct, socks } = localStorageUtil.putProducts(cardName);
                 if (pushProduct) {
                     cartButton.classList.add('item_cart-active');
+                    elem.classList.add('active_item');
                 } else {
                     cartButton.classList.remove('item_cart-active');
                     cartButton.classList.add('item_cart');
+                    elem.classList.remove('active_item');
                 }
                 header.draw(socks.length);
             });

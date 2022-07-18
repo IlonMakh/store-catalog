@@ -11,12 +11,12 @@ export class Sorting {
         sortingBlock.classList.add('sorting');
         sortingBlock.innerHTML = `
             <h6>Sort by</h6>
-            <select class="sorting_select" name="sorting[]">
+            <select class='sorting_select' name='sorting[]'>
                 <option disabled selected>Choose sorting</option>
-                <option value="Sort alphabetically (from A to Z)">Sort alphabetically (from A to Z)</option>
-                <option value="Sort alphabetically (from Z to A)">Sort alphabetically (from Z to A)</option>
-                <option value="Sort by release year (newest first)">Sort by release year (newest first)</option>
-                <option value="Sort by release year (oldest first)">Sort by release year (oldest first)</option>
+                <option value='Sort alphabetically (from A to Z)'>Sort alphabetically (from A to Z)</option>
+                <option value='Sort alphabetically (from Z to A)'>Sort alphabetically (from Z to A)</option>
+                <option value='Sort by release year (newest first)'>Sort by release year (newest first)</option>
+                <option value='Sort by release year (oldest first)'>Sort by release year (oldest first)</option>
             </select>
         `;
 

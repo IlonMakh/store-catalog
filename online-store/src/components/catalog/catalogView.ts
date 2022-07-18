@@ -17,16 +17,16 @@ export class Socks {
         console.log(catalogToDraw);*/
         items.forEach((card: ICardItem) => {
             const socksStorage = localStorageUtil.getProducts();
+            let itemActiveClass: string;
             let activeClass: string;
             let newClass: string;
-            let hideClass: string;
 
             socksStorage.indexOf(card.name) === -1 ? (activeClass = 'item_cart') : (activeClass = 'item_cart-active');
+            socksStorage.indexOf(card.name) === -1 ? (itemActiveClass = '') : (itemActiveClass = ' active_item');
             card.isNew ? (newClass = ' new') : (newClass = '');
-            card.isHide ? (hideClass = 'hide ') : (hideClass = '');
 
             cardItem += `
-                <div class = '${hideClass}catalog_item${newClass}'>
+                <div class = 'catalog_item${newClass} ${itemActiveClass}'>
                     <img class = 'item_img' src = '${card.image}' alt = '${card.name}'>
                     <h4 class = 'item_name' data-tooltip = 'Collection: ${card.collection} (${card.year}), Color: ${card.color}, Size: ${card.size}'>${card.name}</h4>
                     <div class = 'item_price'>${card.price} $</div>

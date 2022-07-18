@@ -9,15 +9,4 @@ export interface ICardItem {
     price: number,
     size: number,
     isNew: boolean,
-    isChosen: boolean,
-    isHide: boolean
 };
-
-export interface IFilter {
-    collection?: string,
-    size?: number,
-    color?: string[],
-    new?: boolean,
-    price?: string[],
-    amount?: string[]
-}

@@ -1,5 +1,6 @@
 header {
     padding: 10px 0 20px;
+    flex: 0 0 auto;
 }
 
 .header_wrapper {

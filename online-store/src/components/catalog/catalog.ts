@@ -11,8 +11,6 @@ export const catalog: ICardItem[] = [
         price: 5,
         size: 40,
         isNew: false,
-        isChosen: false,
-        isHide: false,
     },
 
     {
@@ -25,8 +23,6 @@ export const catalog: ICardItem[] = [
         price: 7,
         size: 35,
         isNew: true,
-        isChosen: false,
-        isHide: false,
     },
 
     {
@@ -39,8 +35,6 @@ export const catalog: ICardItem[] = [
         price: 7.9,
         size: 38,
         isNew: false,
-        isChosen: false,
-        isHide: false,
     },
 
     {
@@ -53,8 +47,6 @@ export const catalog: ICardItem[] = [
         price: 8,
         size: 37,
         isNew: false,
-        isChosen: false,
-        isHide: false,
     },
 
     {
@@ -67,8 +59,6 @@ export const catalog: ICardItem[] = [
         price: 6,
         size: 41,
         isNew: true,
-        isChosen: false,
-        isHide: false,
     },
 
     {
@@ -81,8 +71,6 @@ export const catalog: ICardItem[] = [
         price: 4,
         size: 42,
         isNew: false,
-        isChosen: false,
-        isHide: false,
     },
 
     {
@@ -95,8 +83,6 @@ export const catalog: ICardItem[] = [
         price: 3,
         size: 35,
         isNew: false,
-        isChosen: false,
-        isHide: false,
     },
 
     {
@@ -109,8 +95,6 @@ export const catalog: ICardItem[] = [
         price: 5.5,
         size: 36,
         isNew: false,
-        isChosen: false,
-        isHide: false,
     },
 
     {
@@ -123,8 +107,6 @@ export const catalog: ICardItem[] = [
         price: 10,
         size: 43,
         isNew: true,
-        isChosen: false,
-        isHide: false,
     },
 
     {
@@ -137,8 +119,6 @@ export const catalog: ICardItem[] = [
         price: 5,
         size: 37,
         isNew: false,
-        isChosen: false,
-        isHide: false,
     },
 
     {
@@ -151,8 +131,6 @@ export const catalog: ICardItem[] = [
         price: 7,
         size: 34,
         isNew: true,
-        isChosen: false,
-        isHide: false,
     },
 
     {
@@ -165,8 +143,6 @@ export const catalog: ICardItem[] = [
         price: 6,
         size: 42,
         isNew: false,
-        isChosen: false,
-        isHide: false,
     },
 
     {
@@ -179,8 +155,6 @@ export const catalog: ICardItem[] = [
         price: 3.5,
         size: 36,
         isNew: false,
-        isChosen: false,
-        isHide: false,
     },
 
     {
@@ -193,8 +167,6 @@ export const catalog: ICardItem[] = [
         price: 3.5,
         size: 41,
         isNew: false,
-        isChosen: false,
-        isHide: false,
     },
 
     {
@@ -207,8 +179,6 @@ export const catalog: ICardItem[] = [
         price: 7,
         size: 38,
         isNew: false,
-        isChosen: false,
-        isHide: false,
     },
 
     {
@@ -221,8 +191,6 @@ export const catalog: ICardItem[] = [
         price: 6,
         size: 43,
         isNew: false,
-        isChosen: false,
-        isHide: false,
     },
 
     {
@@ -235,8 +203,6 @@ export const catalog: ICardItem[] = [
         price: 1.5,
         size: 37,
         isNew: false,
-        isChosen: false,
-        isHide: false,
     },
 
     {
@@ -249,8 +215,6 @@ export const catalog: ICardItem[] = [
         price: 1,
         size: 35,
         isNew: false,
-        isChosen: false,
-        isHide: false,
     },
 
     {
@@ -263,8 +227,6 @@ export const catalog: ICardItem[] = [
         size: 37,
         price: 5,
         isNew: true,
-        isChosen: false,
-        isHide: false,
     },
 
     {
@@ -277,8 +239,6 @@ export const catalog: ICardItem[] = [
         price: 2,
         size: 38,
         isNew: true,
-        isChosen: false,
-        isHide: false,
     },
 
     {
@@ -291,7 +251,5 @@ export const catalog: ICardItem[] = [
         price: 3,
         size: 39,
         isNew: false,
-        isChosen: false,
-        isHide: false,
     },
 ];

@@ -42,6 +42,12 @@
     font-size: 14px;
     color: #444444;
     font-weight: bold;
+    transition: 1s;
+}
+
+.filter_size button:hover {
+    background-color: #b3ecf3;
+    border: none;
 }
 
 .filter_size .active {
@@ -75,7 +81,7 @@
 }
 
 .filter_color input:checked::before {
-    content:"\2713";
+    content:'\2713';
     color: black;
     padding: initial;
     font-weight: bold;
@@ -98,7 +104,7 @@
 }
 
 .black input:checked::before {
-    content:"\2713";
+    content:'\2713';
     color: white;
     padding: initial;
     font-weight: bold;
@@ -165,7 +171,7 @@
 }
 
 .filter_new input:checked::before {
-    content:"\2713";
+    content:'\2713';
     color: white;
     padding: initial;
     font-weight: bold;

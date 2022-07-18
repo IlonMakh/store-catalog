@@ -1,6 +1,6 @@
 @font-face {
-    font-family: "Ubuntu"; 
-    src: url("assets/fonts/Ubuntu-Regular.ttf") format("truetype"); 
+    font-family: 'Ubuntu'; 
+    src: url('assets/fonts/Ubuntu-Regular.ttf') format('truetype'); 
     font-style: normal; 
     font-weight: normal; 
     } 
@@ -15,8 +15,10 @@ html {
 }
 
 body {
-    font-family: "Ubuntu", sans-serif;
+    font-family:'Ubuntu', sans-serif;
     background-color: #FFE3E9;
+    display: flex;
+    flex-direction: column;
     height: 100%;
 }
 
@@ -28,6 +30,7 @@ body {
 
 main {
     margin-bottom: 30px;
+    flex: 1 0 auto;
 }
 
 main .wrapper{
@@ -61,6 +64,7 @@ footer {
     background-color: #FFFFFF;
     height: 100px;
     width: 100%;
+    flex: 0 0 100px;
 }
 
 footer .wrapper {
