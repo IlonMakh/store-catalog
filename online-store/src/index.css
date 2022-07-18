@@ -50,9 +50,11 @@ main .wrapper{
 }
 
 .no-result-msg {
+    margin-top: 40px;
     font-size: 20px;
     text-align: center;
     color: #444444;
+    justify-self: center;
 }
 
 footer {

@@ -1,0 +1,27 @@
+.reset {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.reset-filter,
+.reset-settings {
+    width: 40px;
+    height: 40px;
+    background-color: inherit;
+    border: none;
+    cursor: pointer;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.reset-filter {
+    background-image: url(../../assets/images/filter-ico.png);
+}
+
+.reset-settings {
+    background-image: url(../../assets/images/settings-ico.png);
+}

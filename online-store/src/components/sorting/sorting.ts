@@ -1,14 +1,15 @@
-import { socksCatalog } from '../../index';
+import { socksCatalog, sorting } from '../../index';
 import { ICardItem } from '../../types/types';
+import { catalog } from '../catalog/catalog';
 import './sorting.css';
 
 export class Sorting {
     draw() {
         const filterAndSorting: HTMLElement = document.querySelector('.sorting-and-filter') as HTMLElement;
         const filter: HTMLElement = document.querySelector('.filter') as HTMLElement;
-        const sorting: HTMLElement = document.createElement('div') as HTMLElement;
-        sorting.classList.add('sorting');
-        sorting.innerHTML = `
+        const sortingBlock: HTMLElement = document.createElement('div') as HTMLElement;
+        sortingBlock.classList.add('sorting');
+        sortingBlock.innerHTML = `
             <h6>Sort by</h6>
             <select class="sorting_select" name="sorting[]">
                 <option disabled selected>Choose sorting</option>
@@ -19,16 +20,16 @@ export class Sorting {
             </select>
         `;
 
-        filterAndSorting.insertBefore(sorting, filter);
+        filterAndSorting.insertBefore(sortingBlock, filter);
         const selector: HTMLSelectElement = document.querySelector('.sorting_select') as HTMLSelectElement;
         selector.addEventListener('change', function () {
-            socksCatalog.draw();
+            socksCatalog.draw(sorting.sort(catalog));
         });
     }
 
     sort(cards: ICardItem[]) {
         const selector: HTMLSelectElement = document.querySelector('.sorting_select') as HTMLSelectElement;
-        let sortedCards: ICardItem[];
+        let sortedCards: ICardItem[] = [];
         if (selector.value === 'Choose sorting') {
             sortedCards = cards;
             return sortedCards;
@@ -45,5 +46,6 @@ export class Sorting {
             sortedCards = cards.sort((a, b) => (a.year > b.year ? 1 : -1));
             return sortedCards;
         }
+        return sortedCards;
     }
 }

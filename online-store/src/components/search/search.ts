@@ -1,3 +1,4 @@
+import { searchInput } from '../../index';
 import './search.css';
 
 export class Search {
@@ -34,15 +35,19 @@ export class Search {
             }
 
             if (document.querySelectorAll('.hide').length == document.querySelectorAll('.catalog_item').length) {
-                if (!document.querySelector('.no-result-msg')) {
-                    const noResultMsg: HTMLElement = document.createElement('div');
-                    noResultMsg.classList.add('no-result-msg');
-                    noResultMsg.innerHTML = "Sorry, now we don't have the product you are looking for...";
-                    (<HTMLElement>document.querySelector('.catalog_wrapper')).append(noResultMsg);
-                }
+                searchInput.noResult();
             } else {
                 (<HTMLElement>document.querySelector('.no-result-msg')).remove();
             }
         });
+    }
+
+    noResult() {
+        if (!document.querySelector('.no-result-msg')) {
+            const noResultMsg: HTMLElement = document.createElement('div');
+            noResultMsg.classList.add('no-result-msg');
+            noResultMsg.innerHTML = "Sorry, now we don't have the product you are looking for...";
+            (<HTMLElement>document.querySelector('.catalog_wrapper')).append(noResultMsg);
+        }
     }
 }

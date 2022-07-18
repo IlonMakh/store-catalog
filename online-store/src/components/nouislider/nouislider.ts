@@ -2,6 +2,9 @@ import './nouislider.css';
 import './nouislider.min.css';
 import './nouislider.min.js';
 import { TargetElement } from '../../types/nouislider_types';
+import { ICardItem } from '../../types/types';
+import { nouislider, socksCatalog } from '../../index';
+import { catalog } from '../catalog/catalog';
 const noUiSlider = require('nouislider');
 
 export class NoUiSlider {
@@ -42,5 +45,37 @@ export class NoUiSlider {
         rangeAmountSlider?.noUiSlider?.on('update', function (values, handle) {
             amountInputs[handle].value = (Math.round(<number>values[handle]) as unknown) as string;
         });
+
+        rangePriceSlider?.noUiSlider?.on('change', function () {
+            socksCatalog.draw(nouislider.priceRange(catalog));
+        });
+
+        rangeAmountSlider?.noUiSlider?.on('change', function () {
+            socksCatalog.draw(nouislider.amountRange(catalog));
+        });
+    }
+
+    priceRange(cards: ICardItem[]) {
+        const rangePriceSlider: TargetElement = document.querySelector('.price_slider') as TargetElement;
+        const values: string[] = rangePriceSlider.noUiSlider?.get() as string[];
+        const filteredCards: ICardItem[] = cards.filter(function (card) {
+            return (
+                card.price >= Math.round(((values[0] as unknown) as number) * 10) / 10 &&
+                card.price <= Math.round(((values[1] as unknown) as number) * 10) / 10
+            );
+        });
+        return filteredCards;
+    }
+
+    amountRange(cards: ICardItem[]) {
+        const rangeAmountSlider: TargetElement = document.querySelector('.amount_slider') as TargetElement;
+        const values: string[] = rangeAmountSlider.noUiSlider?.get() as string[];
+        const filteredCards: ICardItem[] = cards.filter(function (card) {
+            return (
+                card.amount >= Math.round((values[0] as unknown) as number) &&
+                card.amount <= Math.round((values[1] as unknown) as number)
+            );
+        });
+        return filteredCards;
     }
 }

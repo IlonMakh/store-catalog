@@ -12,6 +12,7 @@ export const catalog: ICardItem[] = [
         size: 40,
         isNew: false,
         isChosen: false,
+        isHide: false,
     },
 
     {
@@ -25,6 +26,7 @@ export const catalog: ICardItem[] = [
         size: 35,
         isNew: true,
         isChosen: false,
+        isHide: false,
     },
 
     {
@@ -38,6 +40,7 @@ export const catalog: ICardItem[] = [
         size: 38,
         isNew: false,
         isChosen: false,
+        isHide: false,
     },
 
     {
@@ -51,6 +54,7 @@ export const catalog: ICardItem[] = [
         size: 37,
         isNew: false,
         isChosen: false,
+        isHide: false,
     },
 
     {
@@ -64,32 +68,35 @@ export const catalog: ICardItem[] = [
         size: 41,
         isNew: true,
         isChosen: false,
+        isHide: false,
     },
 
     {
         image: 'assets/images/catalog/HP_black_socks.jpg',
         name: 'Harry Potter Socks',
         amount: 25,
-        year: 2021,
+        year: 2019,
         collection: 'Hogwarts school',
         color: 'black',
         price: 4,
         size: 42,
         isNew: false,
         isChosen: false,
+        isHide: false,
     },
 
     {
         image: 'assets/images/catalog/HP_grey_socks.jpg',
         name: 'Harry Potter Socks 2',
         amount: 61,
-        year: 2021,
+        year: 2020,
         collection: 'Hogwarts school',
         color: 'grey',
         price: 3,
         size: 35,
         isNew: false,
         isChosen: false,
+        isHide: false,
     },
 
     {
@@ -103,6 +110,7 @@ export const catalog: ICardItem[] = [
         size: 36,
         isNew: false,
         isChosen: false,
+        isHide: false,
     },
 
     {
@@ -116,6 +124,7 @@ export const catalog: ICardItem[] = [
         size: 43,
         isNew: true,
         isChosen: false,
+        isHide: false,
     },
 
     {
@@ -129,6 +138,7 @@ export const catalog: ICardItem[] = [
         size: 37,
         isNew: false,
         isChosen: false,
+        isHide: false,
     },
 
     {
@@ -142,6 +152,7 @@ export const catalog: ICardItem[] = [
         size: 34,
         isNew: true,
         isChosen: false,
+        isHide: false,
     },
 
     {
@@ -155,45 +166,49 @@ export const catalog: ICardItem[] = [
         size: 42,
         isNew: false,
         isChosen: false,
+        isHide: false,
     },
 
     {
         image: 'assets/images/catalog/Simple_red_socks.jpg',
         name: 'Simple Red Socks',
         amount: 47,
-        year: 2019,
+        year: 2018,
         collection: 'Colorful mood',
         color: 'red',
         price: 3.5,
         size: 36,
         isNew: false,
         isChosen: false,
+        isHide: false,
     },
 
     {
         image: 'assets/images/catalog/Simple_yellow.jpg',
         name: 'Simple Yellow Socks',
         amount: 29,
-        year: 2019,
+        year: 2020,
         collection: 'Colorful mood',
         color: 'yellow',
         price: 3.5,
         size: 41,
         isNew: false,
         isChosen: false,
+        isHide: false,
     },
 
     {
         image: 'assets/images/catalog/Snowwhite_socks.jpg',
         name: 'Snow White Socks',
         amount: 38,
-        year: 2022,
+        year: 2021,
         collection: 'Disney princess dream',
         color: 'black',
         price: 7,
         size: 38,
-        isNew: true,
+        isNew: false,
         isChosen: false,
+        isHide: false,
     },
 
     {
@@ -207,19 +222,21 @@ export const catalog: ICardItem[] = [
         size: 43,
         isNew: false,
         isChosen: false,
+        isHide: false,
     },
 
     {
         image: 'assets/images/catalog/summer_grey.jpg',
         name: 'Summer Grey Socks',
         amount: 63,
-        year: 2021,
+        year: 2020,
         collection: 'Summer vibes',
         color: 'grey',
         price: 1.5,
         size: 37,
         isNew: false,
         isChosen: false,
+        isHide: false,
     },
 
     {
@@ -233,6 +250,7 @@ export const catalog: ICardItem[] = [
         size: 35,
         isNew: false,
         isChosen: false,
+        isHide: false,
     },
 
     {
@@ -246,6 +264,7 @@ export const catalog: ICardItem[] = [
         price: 5,
         isNew: true,
         isChosen: false,
+        isHide: false,
     },
 
     {
@@ -259,18 +278,20 @@ export const catalog: ICardItem[] = [
         size: 38,
         isNew: true,
         isChosen: false,
+        isHide: false,
     },
 
     {
         image: 'assets/images/catalog/WW2_socks.jpg',
         name: 'Wonder Women Socks 2',
         amount: 77,
-        year: 2021,
+        year: 2014,
         collection: 'Superhero workdays',
         color: 'grey',
         price: 3,
         size: 39,
         isNew: false,
         isChosen: false,
+        isHide: false,
     },
 ];

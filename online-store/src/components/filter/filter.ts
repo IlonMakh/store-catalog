@@ -1,3 +1,6 @@
+import { filterControllers, socksCatalog } from '../../index';
+import { ICardItem } from '../../types/types';
+import { catalog } from '../catalog/catalog';
 import './filter.css';
 
 export class Filter {
@@ -20,6 +23,7 @@ export class Filter {
                 <div class="filter_size">
                     <h6>Size</h6>
                     <div class="sizes">
+                        <button class="size-btn">34</button>
                         <button class="size-btn">35</button>
                         <button class="size-btn">36</button>
                         <button class="size-btn">37</button>
@@ -35,46 +39,46 @@ export class Filter {
                     <h6>Color</h6>
                     <div class = 'colors'>
                         <div class="white">
-                            <input type="checkbox" id="white">
+                            <input type="checkbox" class = "color_checkbox" id="white">
                             <label for="white">white</label>
                         </div>
                         <div class="black">
-                            <input type="checkbox" id="black">
+                            <input type="checkbox" class = "color_checkbox" id="black">
                             <label for="black">black</label>
                         </div>
                         <div class="red">
-                            <input type="checkbox" id="red">
+                            <input type="checkbox" class = "color_checkbox" id="red">
                             <label for="red">red</label>
                         </div>
                         <div class="grey">
-                            <input type="checkbox" id="grey">
+                            <input type="checkbox" class = "color_checkbox" id="grey">
                             <label for="grey">grey</label>
                         </div>
                         <div class="blue">
-                            <input type="checkbox" id="blue">
+                            <input type="checkbox" class = "color_checkbox" id="blue">
                             <label for="blue">blue</label>
                         </div>
                         <div class="pink">
-                            <input type="checkbox" id="pink">
+                            <input type="checkbox" class = "color_checkbox" id="pink">
                             <label for="pink">pink</label>
                         </div>
                         <div class="purple">
-                            <input type="checkbox" id="purple">
+                            <input type="checkbox" class = "color_checkbox" id="purple">
                             <label for="purple">purple</label>
                         </div>
                         <div class="yellow">
-                            <input type="checkbox" id="yellow">
+                            <input type="checkbox" class = "color_checkbox" id="yellow">
                             <label for="yellow">yellow</label>
                         </div>
                         <div class="green">
-                            <input type="checkbox" id="green">
+                            <input type="checkbox" class = "color_checkbox" id="green">
                             <label for="green">green</label>
                         </div>
                     </div>
                 </div>
                 <div class="filter_new">
-                    <label for="new">Show only new</label>
-                    <input type="checkbox" id="new">
+                    <label for="new_checkbox">Show only new</label>
+                    <input type="checkbox" id="new_checkbox">
                 </div>
                 <div class = "filter_price">
                     <h6>Price ($)</h6>
@@ -95,44 +99,76 @@ export class Filter {
             </div>
         `;
         (<HTMLElement>document.querySelector('.sorting-and-filter')).innerHTML = htmlSorting;
+
+        const selector: HTMLSelectElement = document.querySelector('.collection_select') as HTMLSelectElement;
+        selector.addEventListener('change', () => socksCatalog.draw(filterControllers.collectionFilter(catalog)));
+
+        const sizeButtons: NodeListOf<HTMLElement> = document.querySelectorAll('.size-btn');
+        sizeButtons.forEach(function (elem) {
+            elem.addEventListener('click', function () {
+                elem.classList.toggle('active');
+                socksCatalog.draw(filterControllers.sizeFilter(catalog));
+            });
+        });
+
+        const checkbox: HTMLInputElement = document.getElementById('new_checkbox') as HTMLInputElement;
+        checkbox.addEventListener('change', () => socksCatalog.draw(filterControllers.newFilter(catalog)));
+
+        const clrCheckboxes: NodeListOf<HTMLInputElement> = document.querySelectorAll('.color_checkbox');
+        clrCheckboxes.forEach(function (elem) {
+            elem.addEventListener('change', () => socksCatalog.draw(filterControllers.colorFilter(catalog)));
+        });
     }
 
-    collectionFilter() {
+    collectionFilter(cards: ICardItem[]) {
         const selector: HTMLSelectElement = document.querySelector('.collection_select') as HTMLSelectElement;
-        const cards: NodeListOf<HTMLElement> = document.querySelectorAll('.catalog_item');
-        selector.addEventListener('change', function () {
-            cards.forEach(function (elem) {
-                const name: HTMLElement = elem.querySelector('.item_name') as HTMLElement;
-                const cardInfo: string = name.getAttribute('data-tooltip') as string;
-                if (selector.value === 'No collection') {
-                    elem.classList.remove('hide');
-                } else if ((<string>cardInfo).indexOf(selector.value) == -1) {
-                    elem.classList.add('hide');
-                } else {
-                    elem.classList.remove('hide');
+        const filteredCards: ICardItem[] = cards.filter(function (card) {
+            return selector.value === 'No collection' ? card : card.collection === selector.value;
+        });
+        return filteredCards;
+    }
+
+    sizeFilter(cards: ICardItem[]) {
+        const sizeButtons: NodeListOf<HTMLElement> = document.querySelectorAll('.size-btn');
+        const activeBtns: string[] = [];
+        let filteredCards: ICardItem[] = [];
+        Array.from(sizeButtons).forEach(function (elem) {
+            elem.classList.contains('active') ? activeBtns.push(elem.innerHTML) : activeBtns;
+            filteredCards = cards.filter(function (card) {
+                for (let i = 0; i < activeBtns.length; i++) {
+                    if (+activeBtns[i] === card.size) {
+                        return true;
+                    }
                 }
             });
         });
+        return filteredCards;
     }
-    /*
-    sizeFilter() {
-        const sizeButtons: NodeListOf<HTMLElement> = document.querySelectorAll('.size-btn');
-        const cards: NodeListOf<HTMLElement> = document.querySelectorAll('.catalog_item');
-        sizeButtons.forEach(function (elem) {
-            elem.addEventListener('click', function () {
-                const sizeArray: number[] = [];
-                elem.classList.toggle('active');
-                sizeArray.push(+(elem.innerText));
-                cards.forEach(function(card) {
-                    const name: HTMLElement = elem.querySelector('.item_name') as HTMLElement;
-                    const cardInfo: string = name.getAttribute('data-tooltip') as string;
-                    if(!sizeArray.length) {
-                        card.classList.remove
+
+    newFilter(cards: ICardItem[]) {
+        const checkbox: HTMLInputElement = document.getElementById('new_checkbox') as HTMLInputElement;
+        const filteredCards: ICardItem[] = cards.filter(function (card) {
+            return checkbox.checked ? card.isNew === true : card;
+        });
+        return filteredCards;
+    }
+
+    colorFilter(cards: ICardItem[]) {
+        const clrCheckboxes: NodeListOf<HTMLInputElement> = document.querySelectorAll('.color_checkbox');
+        const activeChbx: string[] = [];
+        let filteredCards: ICardItem[] = [];
+        Array.from(clrCheckboxes).forEach(function (elem) {
+            elem.checked ? activeChbx.push(elem.id) : activeChbx;
+            filteredCards = cards.filter(function (card) {
+                for (let i = 0; i < activeChbx.length; i++) {
+                    if (activeChbx[i] === card.color) {
+                        return true;
                     }
-                })
+                }
             });
         });
-    }*/
+        return filteredCards;
+    }
 }
 
-//Делать проверку на то, есть ли класс хайд у элемента и если нет, то фильтровать
+// попробовать записывать значения фильтров в массив

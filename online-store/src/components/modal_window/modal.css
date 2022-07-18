@@ -1,0 +1,15 @@
+.modal {
+    position: fixed;
+    z-index: 10;
+    width: 500px;
+    padding: 125px 0;
+    font-size: 22px;
+    font-weight: bold;
+    top: calc(50vh - 300px / 2);
+    left: calc(50vw - 500px / 2);
+    background-color: white;
+    color: #FF436E;
+    border: 2px solid #FF436E;
+    text-align: center;
+    border-radius: 10px;
+}
