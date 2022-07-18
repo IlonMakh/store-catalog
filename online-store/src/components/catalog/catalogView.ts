@@ -7,14 +7,6 @@ import './catalog.css';
 export class Socks {
     draw(items: ICardItem[]) {
         let cardItem = '';
-        /*let catalogToDraw = sorting.sort(catalog) as ICardItem[];
-        catalogToDraw = filterControllers.collectionFilter(catalogToDraw);
-        catalogToDraw = filterControllers.sizeFilter(catalogToDraw);
-        catalogToDraw = filterControllers.newFilter(catalogToDraw);
-        catalogToDraw = filterControllers.colorFilter(catalogToDraw);
-        catalogToDraw = nouislider.priceRange(catalogToDraw);
-        catalogToDraw = nouislider.amountRange(catalogToDraw);
-        console.log(catalogToDraw);*/
         items.forEach((card: ICardItem) => {
             const socksStorage = localStorageUtil.getProducts();
             let itemActiveClass: string;
