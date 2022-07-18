@@ -1,7 +1,7 @@
 import './nouislider.css';
 import './nouislider.min.css';
 import './nouislider.min.js';
-import { TargetElement } from '../../types/nouislider_types';
+import { TargetElement } from './nouislider_types';
 import { ICardItem } from '../../types/types';
 import { filterControllers, header, socksCatalog } from '../../index';
 import { catalog } from '../catalog/catalog';
@@ -28,7 +28,7 @@ export class NoUiSlider {
             },
         });
 
-        rangePriceSlider?.noUiSlider?.on('update', function (values, handle) {
+        rangePriceSlider?.noUiSlider?.on('update', function (values, handle: number) {
             priceInputs[handle].value = ((Math.round(<number>values[handle] * 10) / 10) as unknown) as string;
         });
 
@@ -42,7 +42,7 @@ export class NoUiSlider {
             },
         });
 
-        rangeAmountSlider?.noUiSlider?.on('update', function (values, handle) {
+        rangeAmountSlider?.noUiSlider?.on('update', function (values, handle: number) {
             amountInputs[handle].value = (Math.round(<number>values[handle]) as unknown) as string;
         });
 
