@@ -120,6 +120,15 @@ export class Filter {
         });
     }
 
+    allFilters(cards: ICardItem) {
+        const collectionSelector: HTMLSelectElement = document.querySelector('.collection_select') as HTMLSelectElement;
+        const sizeButtons: NodeListOf<HTMLElement> = document.querySelectorAll('.size-btn');
+        const activeBtns: string[] = [];
+        const isNewCheckbox: HTMLInputElement = document.getElementById('new_checkbox') as HTMLInputElement;
+        const clrCheckboxes: NodeListOf<HTMLInputElement> = document.querySelectorAll('.color_checkbox');
+        const activeChbx: string[] = [];
+    }
+
     collectionFilter(cards: ICardItem[]) {
         const selector: HTMLSelectElement = document.querySelector('.collection_select') as HTMLSelectElement;
         const filteredCards: ICardItem[] = cards.filter(function (card) {
@@ -134,13 +143,17 @@ export class Filter {
         let filteredCards: ICardItem[] = [];
         Array.from(sizeButtons).forEach(function (elem) {
             elem.classList.contains('active') ? activeBtns.push(elem.innerHTML) : activeBtns;
-            filteredCards = cards.filter(function (card) {
-                for (let i = 0; i < activeBtns.length; i++) {
-                    if (+activeBtns[i] === card.size) {
-                        return true;
+            if (activeBtns.length !== 0) {
+                filteredCards = cards.filter(function (card) {
+                    for (let i = 0; i < activeBtns.length; i++) {
+                        if (+activeBtns[i] === card.size) {
+                            return true;
+                        }
                     }
-                }
-            });
+                });
+            } else {
+                filteredCards = cards;
+            }
         });
         return filteredCards;
     }
@@ -159,16 +172,18 @@ export class Filter {
         let filteredCards: ICardItem[] = [];
         Array.from(clrCheckboxes).forEach(function (elem) {
             elem.checked ? activeChbx.push(elem.id) : activeChbx;
-            filteredCards = cards.filter(function (card) {
-                for (let i = 0; i < activeChbx.length; i++) {
-                    if (activeChbx[i] === card.color) {
-                        return true;
+            if (activeChbx.length !== 0) {
+                filteredCards = cards.filter(function (card) {
+                    for (let i = 0; i < activeChbx.length; i++) {
+                        if (activeChbx[i] === card.color) {
+                            return true;
+                        }
                     }
-                }
-            });
+                });
+            } else {
+                filteredCards = cards;
+            }
         });
         return filteredCards;
     }
 }
-
-// попробовать записывать значения фильтров в массив
