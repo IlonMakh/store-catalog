@@ -17,19 +17,17 @@ export class Search {
             const searchValue: string = input.value.trim().toLowerCase();
             const searchingItems: NodeListOf<HTMLElement> = document.querySelectorAll('.catalog_item');
 
-            if (searchValue != '') {
-                searchingItems.forEach(function (elem: HTMLElement) {
-                    const name: HTMLElement = elem.querySelector('.item_name') as HTMLElement;
-                    if (name.innerText.toLowerCase().search(searchValue) == -1) {
-                        elem.classList.add('hide');
-                    } else {
+            if (searchValue) {
+                searchingItems.forEach((elem) => {
+                    const itemName = (<HTMLElement>elem.querySelector('.item_name')).innerText.toLowerCase();
+                    if (itemName.includes(searchValue)) {
                         elem.classList.remove('hide');
+                    } else {
+                        elem.classList.add('hide');
                     }
                 });
             } else {
-                searchingItems.forEach(function (elem: HTMLElement) {
-                    elem.classList.remove('hide');
-                });
+                searchingItems.forEach((elem) => elem.classList.remove('hide'));
             }
 
             if (document.querySelectorAll('.hide').length == searchingItems.length) {

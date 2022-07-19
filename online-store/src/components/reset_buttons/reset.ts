@@ -1,5 +1,6 @@
 import { filterControllers, header, nouislider, resetButtons, socksCatalog, sorting } from '../../index';
 import { localStorageUtil } from '../../storages/localStorage';
+import { ICardItem } from '../../types/types';
 import { catalog } from '../catalog/catalog';
 import './reset.css';
 
@@ -10,6 +11,15 @@ export class ResetButtons {
         const reset: HTMLElement = document.createElement('div');
         const resetFilter: HTMLButtonElement = document.createElement('button');
         const resetSettings: HTMLButtonElement = document.createElement('button');
+        function resetFunc(cards: ICardItem[]) {
+            header.draw(localStorageUtil.getProducts().length);
+            filterControllers.draw();
+            sorting.draw();
+            nouislider.draw();
+            resetButtons.draw();
+            header.addToCart();
+            socksCatalog.draw(cards);
+        }
 
         resetSettings.classList.add('reset-settings');
         reset.classList.add('reset');
@@ -20,23 +30,11 @@ export class ResetButtons {
 
         resetSettings.addEventListener('click', function () {
             localStorage.clear();
-            header.draw(localStorageUtil.getProducts().length);
-            filterControllers.draw();
-            sorting.draw();
-            nouislider.draw();
-            resetButtons.draw();
-            socksCatalog.draw(catalog);
-            header.addToCart();
+            resetFunc(catalog);
         });
 
         resetFilter.addEventListener('click', function () {
-            header.draw(localStorageUtil.getProducts().length);
-            filterControllers.draw();
-            sorting.draw();
-            nouislider.draw();
-            resetButtons.draw();
-            socksCatalog.draw(sorting.sort(catalog));
-            header.addToCart();
+            resetFunc(sorting.sort(catalog));
         });
     }
 }

@@ -1,11 +1,10 @@
+import noUiSlider from 'nouislider';
 import './nouislider.css';
-import './nouislider.min.css';
-import './nouislider.min.js';
+import 'nouislider/dist/nouislider.css';
 import { TargetElement } from './nouislider_types';
 import { ICardItem } from '../../types/types';
 import { filterControllers, header, socksCatalog } from '../../index';
 import { catalog } from '../catalog/catalog';
-const noUiSlider = require('nouislider');
 
 export class NoUiSlider {
     draw() {
@@ -29,7 +28,7 @@ export class NoUiSlider {
         });
 
         rangePriceSlider?.noUiSlider?.on('update', function (values, handle: number) {
-            priceInputs[handle].value = ((Math.round(<number>values[handle] * 10) / 10) as unknown) as string;
+            priceInputs[handle].value = (+values[handle]).toFixed(1);
         });
         rangePriceSlider?.noUiSlider?.on('change', function () {
             socksCatalog.draw(filterControllers.allFilters(catalog));
@@ -47,7 +46,7 @@ export class NoUiSlider {
         });
 
         rangeAmountSlider?.noUiSlider?.on('update', function (values, handle: number) {
-            amountInputs[handle].value = (Math.round(<number>values[handle]) as unknown) as string;
+            amountInputs[handle].value = `${+values[handle] >> 0}`;
         });
         rangeAmountSlider?.noUiSlider?.on('change', function () {
             socksCatalog.draw(filterControllers.allFilters(catalog));
@@ -59,10 +58,7 @@ export class NoUiSlider {
         const rangePriceSlider: TargetElement = document.querySelector('.price_slider') as TargetElement;
         const values: string[] = rangePriceSlider.noUiSlider?.get() as string[];
         const filteredCards: ICardItem[] = cards.filter(function (card) {
-            return (
-                card.price >= Math.round(((values[0] as unknown) as number) * 10) / 10 &&
-                card.price <= Math.round(((values[1] as unknown) as number) * 10) / 10
-            );
+            return card.price >= +(+values[0]).toFixed(1) && card.price <= +(+values[1]).toFixed(1);
         });
         return filteredCards;
     }
@@ -71,10 +67,7 @@ export class NoUiSlider {
         const rangeAmountSlider: TargetElement = document.querySelector('.amount_slider') as TargetElement;
         const values: string[] = rangeAmountSlider.noUiSlider?.get() as string[];
         const filteredCards: ICardItem[] = cards.filter(function (card) {
-            return (
-                card.amount >= Math.round((values[0] as unknown) as number) &&
-                card.amount <= Math.round((values[1] as unknown) as number)
-            );
+            return card.amount >= +`${+values[0] >> 0}` && card.amount <= +`${+values[1] >> 0}`;
         });
         return filteredCards;
     }

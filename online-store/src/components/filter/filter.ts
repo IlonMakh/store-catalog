@@ -106,7 +106,7 @@ export class Filter {
         });
     }
 
-    allFilters(cards: ICardItem[]) {
+    allFilters(cards: ICardItem[]): ICardItem[] {
         let filteredCards: ICardItem[] = sorting.sort(cards);
         filteredCards = filterControllers.collectionFilter(filteredCards);
         filteredCards = filterControllers.sizeFilter(filteredCards);
@@ -117,7 +117,7 @@ export class Filter {
         return filteredCards;
     }
 
-    collectionFilter(cards: ICardItem[]) {
+    collectionFilter(cards: ICardItem[]): ICardItem[] {
         const selector: HTMLSelectElement = document.querySelector('.collection_select') as HTMLSelectElement;
         const filteredCards: ICardItem[] = cards.filter(function (card): boolean {
             return selector.value === 'No collection' || card.collection === selector.value;
@@ -125,57 +125,34 @@ export class Filter {
         return filteredCards;
     }
 
-    sizeFilter(cards: ICardItem[]) {
-        const sizeButtons: NodeListOf<HTMLElement> = document.querySelectorAll('.size-btn');
-        const activeBtns: string[] = [];
-        let filteredCards: ICardItem[];
-        Array.from(sizeButtons).forEach(function (elem) {
-            if (elem.classList.contains('active')) {
-                activeBtns.push(elem.innerHTML);
-            }
-        });
-        if (activeBtns.length) {
-            filteredCards = cards.filter(function (card) {
-                for (let i = 0; i < activeBtns.length; i++) {
-                    if (+activeBtns[i] === card.size) {
-                        return true;
-                    }
-                }
-            });
-        } else {
-            filteredCards = cards;
-        }
-        return filteredCards;
-    }
-
     newFilter(cards: ICardItem[]) {
         const checkbox: HTMLInputElement = document.getElementById('new_checkbox') as HTMLInputElement;
         const filteredCards: ICardItem[] = cards.filter(function (card): boolean {
-            return (checkbox.checked && card.isNew === true) || card == card;
+            return checkbox.checked ? card.isNew === true : true;
         });
         return filteredCards;
     }
 
-    colorFilter(cards: ICardItem[]) {
-        const clrCheckboxes: NodeListOf<HTMLInputElement> = document.querySelectorAll('.color_checkbox');
-        const activeChbx: string[] = [];
-        let filteredCards: ICardItem[];
-        Array.from(clrCheckboxes).forEach(function (elem) {
-            if (elem.checked) {
-                activeChbx.push(elem.id);
-            }
-        });
-        if (activeChbx.length) {
-            filteredCards = cards.filter(function (card) {
-                for (let i = 0; i < activeChbx.length; i++) {
-                    if (activeChbx[i] === card.color) {
-                        return true;
-                    }
-                }
-            });
-        } else {
-            filteredCards = cards;
+    sizeFilter(cards: ICardItem[]): ICardItem[] {
+        const sizeButtons: NodeListOf<HTMLElement> = document.querySelectorAll('.size-btn');
+        const activeBtns: HTMLElement[] = Array.from(sizeButtons).filter((elem) => elem.classList.contains('active'));
+
+        if (activeBtns.length) {
+            const btnNames: string[] = activeBtns.map((btn) => btn.innerHTML);
+            return cards.filter((card): boolean => btnNames.some((btnName) => +btnName == card.size));
         }
-        return filteredCards;
+
+        return cards;
+    }
+
+    colorFilter(cards: ICardItem[]): ICardItem[] {
+        const clrCheckboxes: NodeListOf<HTMLInputElement> = document.querySelectorAll('.color_checkbox');
+        const activeChbx: HTMLInputElement[] = Array.from(clrCheckboxes).filter((elem) => elem.checked);
+
+        if (activeChbx.length) {
+            const chbxId: string[] = activeChbx.map((chbx) => chbx.id);
+            return cards.filter((card): boolean => chbxId.some((chbxId) => chbxId === card.color));
+        }
+        return cards;
     }
 }

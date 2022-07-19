@@ -44,17 +44,17 @@ export interface Formatter extends PartialFormatter {
     from: (value: string) => number | false;
 }
 export declare enum PipsMode {
-    Range = "range",
-    Steps = "steps",
-    Positions = "positions",
-    Count = "count",
-    Values = "values"
+    Range = 'range',
+    Steps = 'steps',
+    Positions = 'positions',
+    Count = 'count',
+    Values = 'values',
 }
 export declare enum PipsType {
     None = -1,
     NoValue = 0,
     LargeValue = 1,
-    SmallValue = 2
+    SmallValue = 2,
 }
 declare type WrappedSubRange = [number] | [number, number];
 declare type SubRange = number | WrappedSubRange;
@@ -110,9 +110,9 @@ interface UpdatableOptions {
 }
 export interface Options extends UpdatableOptions {
     range: Range;
-    connect?: "lower" | "upper" | boolean | boolean[];
-    orientation?: "vertical" | "horizontal";
-    direction?: "ltr" | "rtl";
+    connect?: 'lower' | 'upper' | boolean | boolean[];
+    orientation?: 'vertical' | 'horizontal';
+    direction?: 'ltr' | 'rtl';
     behaviour?: string;
     keyboardSupport?: boolean;
     keyboardPageMultiplier?: number;
@@ -163,7 +163,15 @@ interface NearBySteps {
 declare type GetResult = number | string | (string | number)[];
 declare type NextStepsForHandle = [number | false | null, number | false | null];
 declare type PipsFilter = (value: number, type: PipsType) => PipsType;
-declare type EventCallback = (this: API, values: (number | string)[], handleNumber: number, unencoded: number[], tap: boolean, locations: number[], slider: API) => void;
+declare type EventCallback = (
+    this: API,
+    values: (number | string)[],
+    handleNumber: number,
+    unencoded: number[],
+    tap: boolean,
+    locations: number[],
+    slider: API
+) => void;
 declare class Spectrum {
     xPct: number[];
     xVal: number[];

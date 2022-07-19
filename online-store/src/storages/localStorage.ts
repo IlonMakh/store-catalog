@@ -9,7 +9,7 @@ class LocalStorage {
 
     getProducts() {
         const productsLocalStorage: string | null = localStorage.getItem(this.productsList);
-        if (productsLocalStorage !== null) {
+        if (productsLocalStorage) {
             return JSON.parse(productsLocalStorage);
         }
         return [];

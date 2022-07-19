@@ -7,7 +7,6 @@ export class ModalWindow {
         modal.classList.add('modal');
         modal.innerHTML = 'Sorry, the number of items exceeded 20.<br>Cart is full.';
         main.append(modal);
-        console.log('draw modal');
 
         setTimeout(() => {
             main.removeChild(modal);
