@@ -11,13 +11,13 @@
     background-image: url(../../assets/images/search_ico.png);
     background-repeat: no-repeat;
     background-position: 20px;
-    border: 2px solid #FF436E;
+    border: 2px solid #ff436e;
     background-color: #ffff;
     padding-left: 60px;
     outline: none;
 }
 
-.search_input::-webkit-search-cancel-button{
+.search_input::-webkit-search-cancel-button {
     padding-right: 20px;
     -webkit-appearance: none;
     cursor: pointer;
@@ -28,4 +28,3 @@
     background-repeat: no-repeat;
     background-size: contain;
 }
-

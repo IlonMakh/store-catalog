@@ -1,9 +1,9 @@
 @font-face {
-    font-family: 'Ubuntu'; 
-    src: url('assets/fonts/Ubuntu-Regular.ttf') format('truetype'); 
-    font-style: normal; 
-    font-weight: normal; 
-    } 
+    font-family: 'Ubuntu';
+    src: url('assets/fonts/Ubuntu-Regular.ttf') format('truetype');
+    font-style: normal;
+    font-weight: normal;
+}
 
 * {
     margin: 0;
@@ -15,8 +15,8 @@ html {
 }
 
 body {
-    font-family:'Ubuntu', sans-serif;
-    background-color: #FFE3E9;
+    font-family: 'Ubuntu', sans-serif;
+    background-color: #ffe3e9;
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -33,7 +33,7 @@ main {
     flex: 1 0 auto;
 }
 
-main .wrapper{
+main .wrapper {
     display: grid;
     grid-template-columns: 1fr 3fr;
     gap: 30px;
@@ -42,7 +42,7 @@ main .wrapper{
 }
 
 .sorting-and-filter {
-    border: 2px solid #FFFFFF;
+    border: 2px solid #ffffff;
     padding: 20px;
     width: 250px;
     height: fit-content;
@@ -61,7 +61,7 @@ main .wrapper{
 }
 
 footer {
-    background-color: #FFFFFF;
+    background-color: #ffffff;
     height: 100px;
     width: 100%;
     flex: 0 0 100px;
@@ -88,7 +88,7 @@ footer .github {
     height: 3vw;
 }
 
-footer .github img{
+footer .github img {
     width: 100%;
 }
 

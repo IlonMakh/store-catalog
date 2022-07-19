@@ -125,12 +125,13 @@ export class Filter {
         return filteredCards;
     }
 
-    newFilter(cards: ICardItem[]) {
+    newFilter(cards: ICardItem[]): ICardItem[] {
         const checkbox: HTMLInputElement = document.getElementById('new_checkbox') as HTMLInputElement;
-        const filteredCards: ICardItem[] = cards.filter(function (card): boolean {
-            return checkbox.checked ? card.isNew === true : true;
-        });
-        return filteredCards;
+        if (checkbox.checked) {
+            return cards.filter((card) => card.isNew);
+        }
+
+        return cards;
     }
 
     sizeFilter(cards: ICardItem[]): ICardItem[] {

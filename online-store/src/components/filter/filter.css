@@ -15,9 +15,9 @@
     background-image: url(../../assets/images/arrow-ico.png);
     background-repeat: no-repeat;
     background-position: 155px;
-    background-size:15px;
+    background-size: 15px;
     padding: 5px 20px 5px 10px;
-    border: 1px solid #FF436E;
+    border: 1px solid #ff436e;
     border-radius: 5px;
     outline: none;
     font-size: 14px;
@@ -37,7 +37,7 @@
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    border: 1px solid #FF436E;
+    border: 1px solid #ff436e;
     cursor: pointer;
     font-size: 14px;
     color: #444444;
@@ -76,12 +76,12 @@
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
-    border-radius:50%;
+    border-radius: 50%;
     position: relative;
 }
 
 .filter_color input:checked::before {
-    content:'\2713';
+    content: '\2713';
     color: black;
     padding: initial;
     font-weight: bold;
@@ -104,14 +104,14 @@
 }
 
 .black input:checked::before {
-    content:'\2713';
+    content: '\2713';
     color: white;
     padding: initial;
     font-weight: bold;
     position: absolute;
     left: 5px;
     top: 1px;
-} 
+}
 
 .red input {
     background-color: red;
@@ -160,18 +160,18 @@
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
-    background-color: #FFFFFF;
+    background-color: #ffffff;
     position: relative;
-    border: 1px solid #FF436E;
+    border: 1px solid #ff436e;
     border-radius: 5px;
 }
 
 .filter_new input:checked {
-    background-color: #FF436E;
+    background-color: #ff436e;
 }
 
 .filter_new input:checked::before {
-    content:'\2713';
+    content: '\2713';
     color: white;
     padding: initial;
     font-weight: bold;
