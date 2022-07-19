@@ -31,6 +31,10 @@ export class NoUiSlider {
         rangePriceSlider?.noUiSlider?.on('update', function (values, handle: number) {
             priceInputs[handle].value = ((Math.round(<number>values[handle] * 10) / 10) as unknown) as string;
         });
+        rangePriceSlider?.noUiSlider?.on('change', function () {
+            socksCatalog.draw(filterControllers.allFilters(catalog));
+            header.addToCart();
+        });
 
         noUiSlider.create(rangeAmountSlider, {
             start: [1, 100],
@@ -45,12 +49,6 @@ export class NoUiSlider {
         rangeAmountSlider?.noUiSlider?.on('update', function (values, handle: number) {
             amountInputs[handle].value = (Math.round(<number>values[handle]) as unknown) as string;
         });
-
-        rangePriceSlider?.noUiSlider?.on('change', function () {
-            socksCatalog.draw(filterControllers.allFilters(catalog));
-            header.addToCart();
-        });
-
         rangeAmountSlider?.noUiSlider?.on('change', function () {
             socksCatalog.draw(filterControllers.allFilters(catalog));
             header.addToCart();

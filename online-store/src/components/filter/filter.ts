@@ -5,75 +5,51 @@ import './filter.css';
 
 export class Filter {
     draw() {
+        const collections = [
+            'No collection',
+            'Superhero workdays',
+            'Disney princess dream',
+            'Warm and cozy',
+            'Hogwarts school',
+            'Christmas morning',
+            'Colorful mood',
+            'Summer vibes',
+        ];
+        const colors = ['white', 'black', 'red', 'grey', 'blue', 'pink', 'purple', 'yellow', 'green'];
+        const sizes = ['34', '35', '36', '37', '38', '39', '40', '41', '42', '43'];
         const htmlSorting = `
             <div class='filter'>
                 <div class='filter_collection'>
                     <h6>Collection</h6>
                     <select class='collection_select' name='collection[]'>
-                        <option selected>No collection</option>
-                        <option value='Superhero workdays'>Superhero workdays</option>
-                        <option value='Disney princess dream'>Disney princess dream</option>
-                        <option value='Warm and cozy'>Warm and cozy</option>
-                        <option value='Hogwarts school'>Hogwarts school</option>
-                        <option value='Christmas morning'>Christmas morning</option>
-                        <option value='Colorful mood'>Colorful mood</option>
-                        <option value='Summer vibes'>Summer vibes</option>
+                        ${collections
+                            .map((collection) => {
+                                return `<option value = '${collection}'>${collection}</option>`;
+                            })
+                            .join('')}
                     </select>
                 </div>
                 <div class='filter_size'>
                     <h6>Size</h6>
                     <div class='sizes'>
-                        <button class='size-btn'>34</button>
-                        <button class='size-btn'>35</button>
-                        <button class='size-btn'>36</button>
-                        <button class='size-btn'>37</button>
-                        <button class='size-btn'>38</button>
-                        <button class='size-btn'>39</button>
-                        <button class='size-btn'>40</button>
-                        <button class='size-btn'>41</button>
-                        <button class='size-btn'>42</button>
-                        <button class='size-btn'>43</button>
+                    ${sizes
+                        .map((size) => {
+                            return `<button class = 'size-btn'>${size}</button>`;
+                        })
+                        .join('')}
                     </div>
                 </div>
-                <div class='filter_color'
+                <div class='filter_color'>
                     <h6>Color</h6>
                     <div class = 'colors'>
-                        <div class='white'>
-                            <input type='checkbox' class = 'color_checkbox' id='white'>
-                            <label for='white'>white</label>
-                        </div>
-                        <div class='black'>
-                            <input type='checkbox' class = 'color_checkbox' id='black'>
-                            <label for='black'>black</label>
-                        </div>
-                        <div class='red'>
-                            <input type='checkbox' class = 'color_checkbox' id='red'>
-                            <label for='red'>red</label>
-                        </div>
-                        <div class='grey'>
-                            <input type='checkbox' class = 'color_checkbox' id='grey'>
-                            <label for='grey'>grey</label>
-                        </div>
-                        <div class='blue'>
-                            <input type='checkbox' class = 'color_checkbox' id='blue'>
-                            <label for='blue'>blue</label>
-                        </div>
-                        <div class='pink'>
-                            <input type='checkbox' class = 'color_checkbox' id='pink'>
-                            <label for='pink'>pink</label>
-                        </div>
-                        <div class='purple'>
-                            <input type='checkbox' class = 'color_checkbox' id='purple'>
-                            <label for='purple'>purple</label>
-                        </div>
-                        <div class='yellow'>
-                            <input type='checkbox' class = 'color_checkbox' id='yellow'>
-                            <label for='yellow'>yellow</label>
-                        </div>
-                        <div class='green'>
-                            <input type='checkbox' class = 'color_checkbox' id='green'>
-                            <label for='green'>green</label>
-                        </div>
+                    ${colors
+                        .map((color) => {
+                            return `<div class=${color}>
+                            <input type="checkbox" class = "color_checkbox" id=${color}>
+                            <label for=${color}>${color}</label>
+                        </div>`;
+                        })
+                        .join('')}
                     </div>
                 </div>
                 <div class='filter_new'>
@@ -123,7 +99,7 @@ export class Filter {
 
         const clrCheckboxes: NodeListOf<HTMLInputElement> = document.querySelectorAll('.color_checkbox');
         clrCheckboxes.forEach(function (elem) {
-            elem.addEventListener('change' || 'load', () => {
+            elem.addEventListener('change', () => {
                 socksCatalog.draw(filterControllers.allFilters(catalog));
                 header.addToCart();
             });
@@ -143,8 +119,8 @@ export class Filter {
 
     collectionFilter(cards: ICardItem[]) {
         const selector: HTMLSelectElement = document.querySelector('.collection_select') as HTMLSelectElement;
-        const filteredCards: ICardItem[] = cards.filter(function (card) {
-            return selector.value === 'No collection' ? card : card.collection === selector.value;
+        const filteredCards: ICardItem[] = cards.filter(function (card): boolean {
+            return selector.value === 'No collection' || card.collection === selector.value;
         });
         return filteredCards;
     }
@@ -152,28 +128,30 @@ export class Filter {
     sizeFilter(cards: ICardItem[]) {
         const sizeButtons: NodeListOf<HTMLElement> = document.querySelectorAll('.size-btn');
         const activeBtns: string[] = [];
-        let filteredCards: ICardItem[] = [];
+        let filteredCards: ICardItem[];
         Array.from(sizeButtons).forEach(function (elem) {
-            elem.classList.contains('active') ? activeBtns.push(elem.innerHTML) : activeBtns;
-            if (activeBtns.length !== 0) {
-                filteredCards = cards.filter(function (card) {
-                    for (let i = 0; i < activeBtns.length; i++) {
-                        if (+activeBtns[i] === card.size) {
-                            return true;
-                        }
-                    }
-                });
-            } else {
-                filteredCards = cards;
+            if (elem.classList.contains('active')) {
+                activeBtns.push(elem.innerHTML);
             }
         });
+        if (activeBtns.length) {
+            filteredCards = cards.filter(function (card) {
+                for (let i = 0; i < activeBtns.length; i++) {
+                    if (+activeBtns[i] === card.size) {
+                        return true;
+                    }
+                }
+            });
+        } else {
+            filteredCards = cards;
+        }
         return filteredCards;
     }
 
     newFilter(cards: ICardItem[]) {
         const checkbox: HTMLInputElement = document.getElementById('new_checkbox') as HTMLInputElement;
-        const filteredCards: ICardItem[] = cards.filter(function (card) {
-            return checkbox.checked ? card.isNew === true : card;
+        const filteredCards: ICardItem[] = cards.filter(function (card): boolean {
+            return (checkbox.checked && card.isNew === true) || card == card;
         });
         return filteredCards;
     }
@@ -181,21 +159,23 @@ export class Filter {
     colorFilter(cards: ICardItem[]) {
         const clrCheckboxes: NodeListOf<HTMLInputElement> = document.querySelectorAll('.color_checkbox');
         const activeChbx: string[] = [];
-        let filteredCards: ICardItem[] = [];
+        let filteredCards: ICardItem[];
         Array.from(clrCheckboxes).forEach(function (elem) {
-            elem.checked ? activeChbx.push(elem.id) : activeChbx;
-            if (activeChbx.length !== 0) {
-                filteredCards = cards.filter(function (card) {
-                    for (let i = 0; i < activeChbx.length; i++) {
-                        if (activeChbx[i] === card.color) {
-                            return true;
-                        }
-                    }
-                });
-            } else {
-                filteredCards = cards;
+            if (elem.checked) {
+                activeChbx.push(elem.id);
             }
         });
+        if (activeChbx.length) {
+            filteredCards = cards.filter(function (card) {
+                for (let i = 0; i < activeChbx.length; i++) {
+                    if (activeChbx[i] === card.color) {
+                        return true;
+                    }
+                }
+            });
+        } else {
+            filteredCards = cards;
+        }
         return filteredCards;
     }
 }

@@ -19,10 +19,8 @@ export class Search {
 
             if (searchValue != '') {
                 searchingItems.forEach(function (elem: HTMLElement) {
-                    if (
-                        (<HTMLElement>elem.querySelector('.item_name')).innerText.toLowerCase().search(searchValue) ==
-                        -1
-                    ) {
+                    const name: HTMLElement = elem.querySelector('.item_name') as HTMLElement;
+                    if (name.innerText.toLowerCase().search(searchValue) == -1) {
                         elem.classList.add('hide');
                     } else {
                         elem.classList.remove('hide');
@@ -34,7 +32,7 @@ export class Search {
                 });
             }
 
-            if (document.querySelectorAll('.hide').length == document.querySelectorAll('.catalog_item').length) {
+            if (document.querySelectorAll('.hide').length == searchingItems.length) {
                 searchInput.noResult();
             } else {
                 (<HTMLElement>document.querySelector('.no-result-msg')).remove();
