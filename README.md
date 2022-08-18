@@ -1,11 +1,1 @@
-# ilonmakh-JSFE2022Q1
-Private repository for @ilonmakh
-
-## Telegram: @xxmorf
-## Discord: ilona(@ilonmakh)
-
-
-### Список выполненных заданий: 
-
-#### 1. Shelter.Desktop 
-
+https://rolling-scopes-school.github.io/ilonmakh-JSFE2022Q1/online-store/
